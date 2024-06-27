@@ -1,27 +1,27 @@
 ﻿<baseClasses:DialogViewBase
-                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                     xmlns:mahApps="http://metro.mahapps.com/winfx/xaml/controls"
-                     xmlns:prism="http://prismlibrary.com/"
-                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                     xmlns:inf="clr-namespace:ImprezGarage.Infrastructure;assembly=ImprezGarage.Infrastructure"
-                     xmlns:baseClasses="clr-namespace:ImprezGarage.Infrastructure.BaseClasses;assembly=ImprezGarage.Infrastructure"
-                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                     xmlns:viewModels="clr-namespace:ImprezGarage.ViewModels"
-                     xmlns:account="clr-namespace:ImprezGarage.Modules.Account.Views;assembly=ImprezGarage.Modules.Account"
-                     x:Class="ImprezGarage.Views.MainWindow"
-                     WindowStartupLocation="CenterScreen"
-                     ShowIconOnTitleBar="False"
-                     prism:ViewModelLocator.AutoWireViewModel="True"
-                     Title="{Binding Title}" 
-                     Height="659" 
-                     Width="858"
-                     mc:Ignorable="d"
-                     d:DataContext="{d:DesignInstance Type=viewModels:MainWindowViewModel}">
+    x:Class="ImprezGarage.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:account="clr-namespace:ImprezGarage.Modules.Account.Views;assembly=ImprezGarage.Modules.Account"
+    xmlns:baseClasses="clr-namespace:ImprezGarage.Infrastructure.BaseClasses;assembly=ImprezGarage.Infrastructure"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:inf="clr-namespace:ImprezGarage.Infrastructure;assembly=ImprezGarage.Infrastructure"
+    xmlns:mahApps="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:viewModels="clr-namespace:ImprezGarage.ViewModels"
+    Title="{Binding Title}"
+    Width="858"
+    Height="659"
+    d:DataContext="{d:DesignInstance Type=viewModels:MainWindowViewModel}"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    ShowIconOnTitleBar="False"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
     <baseClasses:DialogViewBase.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/ImprezGarage.Infrastructure;component/Styles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/ImprezGarage.Infrastructure;component/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </baseClasses:DialogViewBase.Resources>
@@ -29,95 +29,123 @@
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="179"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="179" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition/>
+                <RowDefinition Height="80" />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0" 
-                        Grid.Column="0" 
-                        Orientation="Horizontal" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center">
-                <Image Source="pack://application:,,,/ImprezGarage;component/Resources/iconv3.png"
-                       Height="18"
-                       Margin="0,0,5,0"/>
-                <TextBlock Foreground="{StaticResource ImprezGarage.Main}" 
-                           Text="ImprezGarage" 
-                           FontSize="18"/>
+            <StackPanel
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <Image
+                    Height="18"
+                    Margin="0,0,5,0"
+                    Source="pack://application:,,,/ImprezGarage;component/Resources/iconv3.png" />
+                <TextBlock
+                    FontSize="18"
+                    Foreground="{StaticResource ImprezGarage.Main}"
+                    Text="ImprezGarage" />
             </StackPanel>
 
 
-            <!-- Menu Strip -->
-            <Border Grid.Column="0" Grid.Row="1" Background="{StaticResource ImprezGarage.Main}" CornerRadius="0,46,0,0">
+            <!--  Menu Strip  -->
+            <Border
+                Grid.Row="1"
+                Grid.Column="0"
+                Background="{StaticResource ImprezGarage.Main}"
+                CornerRadius="0,46,0,0">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="174"/>
+                        <RowDefinition />
+                        <RowDefinition Height="174" />
                     </Grid.RowDefinitions>
-                    <ContentControl prism:RegionManager.RegionName="{x:Static inf:RegionNames.VehicleListRegion}" VerticalAlignment="Top"/>
-                    <account:AccountDetails Grid.Column="0" Grid.Row="1"/>
-                    <TextBlock Grid.Row="1" Text="{Binding Version}" VerticalAlignment="Bottom" Foreground="{StaticResource ImprezGarage.Third}" Margin="5"/>
+                    <ContentControl VerticalAlignment="Top" prism:RegionManager.RegionName="{x:Static inf:RegionNames.VehicleListRegion}" />
+                    <account:AccountDetails Grid.Row="1" Grid.Column="0" />
+                    <TextBlock
+                        Grid.Row="1"
+                        Margin="5"
+                        VerticalAlignment="Bottom"
+                        Foreground="{StaticResource ImprezGarage.Third}"
+                        Text="{Binding Version}" />
                 </Grid>
             </Border>
 
-            <!-- Nav Bar -->
+            <!--  Nav Bar  -->
             <Grid Grid.Row="0" Grid.Column="1">
                 <DockPanel>
-                    <account:AccountControlButton DockPanel.Dock="Right" 
-                                                  HorizontalAlignment="Right" 
-                                                  Margin="0,0,27,0"/>
-                    <DockPanel DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,0,15,0">
-                        <Button DockPanel.Dock="Right"
+                    <account:AccountControlButton
+                        Margin="0,0,27,0"
+                        HorizontalAlignment="Right"
+                        DockPanel.Dock="Right" />
+                    <DockPanel
+                        Margin="0,0,15,0"
+                        HorizontalAlignment="Right"
+                        DockPanel.Dock="Right">
+                        <Button
+                            Width="30"
+                            Height="30"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Height="30"
-                            Width="30"
-                            ToolTip="Settings"
-                            Visibility="Collapsed"
                             Command="{Binding OpenSettings}"
-                            Style="{StaticResource CircleButtonStyle}">
-                            <Image Source="pack://application:,,,/ImprezGarage;component/Resources/icons8-settings-24.png"
-                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Button>
-                        <Button DockPanel.Dock="Right"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Height="30"
-                            Width="30"
-                            ToolTip="Help"
-                            Command="{Binding OpenHelp}"
-                            Style="{StaticResource CircleButtonStyle}">
-                            <Image Source="pack://application:,,,/ImprezGarage;component/Resources/icons8-help-24.png"
-                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Button>
-                        <Button DockPanel.Dock="Right"
+                            DockPanel.Dock="Right"
+                            Style="{StaticResource CircleButtonStyle}"
+                            ToolTip="Settings"
+                            Visibility="Collapsed">
+                            <Image
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Height="30"
-                                Width="30"
-                                Margin="0,0,15,0"
-                                ToolTip="Refresh"
-                                Command="{Binding RefreshCommand}"
-                                Style="{StaticResource CircleButtonStyle}">
-                            <Image Source="pack://application:,,,/ImprezGarage;component/Resources/refresh.png"
-                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                Source="pack://application:,,,/ImprezGarage;component/Resources/icons8-settings-24.png" />
                         </Button>
-                        <Button DockPanel.Dock="Right"
+                        <Button
+                            Width="30"
+                            Height="30"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Height="30"
+                            Command="{Binding OpenHelp}"
+                            DockPanel.Dock="Right"
+                            Style="{StaticResource CircleButtonStyle}"
+                            ToolTip="Help">
+                            <Image
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Source="pack://application:,,,/ImprezGarage;component/Resources/icons8-help-24.png" />
+                        </Button>
+                        <Button
                             Width="30"
+                            Height="30"
                             Margin="0,0,15,0"
-                            ToolTip="Notifications"
-                            Visibility="Collapsed"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Command="{Binding RefreshCommand}"
+                            DockPanel.Dock="Right"
+                            Style="{StaticResource CircleButtonStyle}"
+                            ToolTip="Refresh">
+                            <Image
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Source="pack://application:,,,/ImprezGarage;component/Resources/refresh.png" />
+                        </Button>
+                        <Button
+                            Width="30"
+                            Height="30"
+                            Margin="0,0,15,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
                             Command="{Binding OpenNotifications}"
-                            Style="{StaticResource CircleButtonStyle}">
-                            <Image Source="pack://application:,,,/ImprezGarage;component/Resources/icons8-notification-24.png"
-                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            DockPanel.Dock="Right"
+                            Style="{StaticResource CircleButtonStyle}"
+                            ToolTip="Notifications"
+                            Visibility="Collapsed">
+                            <Image
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Source="pack://application:,,,/ImprezGarage;component/Resources/icons8-notification-24.png" />
                         </Button>
                     </DockPanel>
                     <!--<TextBox x:Name="SearchBox" Style="{DynamicResource GreyTextBoxStyle}"/>-->
@@ -125,30 +153,41 @@
             </Grid>
 
 
-            <!-- Content Region -->
-            <Grid Grid.Column="1" Grid.Row="1" Margin="42,0,29,0">
+            <!--  Content Region  -->
+            <Grid
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="42,0,29,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="68"/>
-                    <RowDefinition Height="1"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="68" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
-                <ContentControl Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="0,0,0,11"
-                                prism:RegionManager.RegionName="{x:Static inf:RegionNames.VehicleHeaderRegion}"/>
-               
+                <ContentControl
+                    Grid.Row="0"
+                    Margin="0,0,0,11"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Bottom"
+                    prism:RegionManager.RegionName="{x:Static inf:RegionNames.VehicleHeaderRegion}" />
 
-                <Rectangle Grid.Row="1"
-                       Height="1"
-                       Fill="{StaticResource ImprezGarage.Grey}"
-                       HorizontalAlignment="Stretch"/>
 
-                
+                <Rectangle
+                    Grid.Row="1"
+                    Height="1"
+                    HorizontalAlignment="Stretch"
+                    Fill="{StaticResource ImprezGarage.Grey}" />
+
+
                 <ContentControl Grid.Row="2" prism:RegionManager.RegionName="{x:Static inf:RegionNames.ContentRegion}" />
             </Grid>
 
-            <ContentControl Grid.Row="0" Grid.RowSpan="2" 
-                            Grid.Column="0" Grid.ColumnSpan="2"
-                            Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Inverse}"
-                            prism:RegionManager.RegionName="{x:Static inf:RegionNames.AuthenticateRegion}" />
+            <ContentControl
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                prism:RegionManager.RegionName="{x:Static inf:RegionNames.AuthenticateRegion}"
+                Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=Inverse}" />
         </Grid>
     </Grid>
 

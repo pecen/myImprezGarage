@@ -5,7 +5,7 @@
 
 namespace ImprezGarage.Modules.Account
 {
-    using CountriesWrapper;
+    //using CountriesWrapper;
     using Infrastructure;
     using Prism.Ioc;
     using Prism.Modularity;
@@ -23,12 +23,12 @@ namespace ImprezGarage.Modules.Account
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterSingleton<ICountryManager, CountryManager>();
+            //containerRegistry.RegisterSingleton<ICountryManager, CountryManager>();
         }
 
         public async void OnInitialized(IContainerProvider containerProvider)
         {
-            await containerProvider.Resolve<ICountryManager>().InitialiseAsync();
+            //await containerProvider.Resolve<ICountryManager>().InitialiseAsync();
             _regionManager.RegisterViewWithRegion(RegionNames.VehicleHeaderRegion, typeof(ProfileHeader));
             _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(ProfilePage));
         }

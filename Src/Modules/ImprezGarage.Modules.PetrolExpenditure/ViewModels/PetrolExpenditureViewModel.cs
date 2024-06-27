@@ -6,7 +6,7 @@
 namespace ImprezGarage.Modules.PetrolExpenditure.ViewModels
 {
     using CommonServiceLocator;
-    using CountriesWrapper;
+    //using CountriesWrapper;
     using Infrastructure;
     using Infrastructure.Model;
     using Infrastructure.Services;
@@ -24,7 +24,7 @@ namespace ImprezGarage.Modules.PetrolExpenditure.ViewModels
         private readonly IEventAggregator _eventAggregator;
         private readonly IVehicleService _vehicleService;
         private readonly IAuthenticationService _authenticationService;
-        private readonly ICountryManager _countryManager;
+        //private readonly ICountryManager _countryManager;
         private ObservableCollection<PetrolExpenseViewModel> _expenses;
         private DateTime _fromDate;
         private DateTime _toDate;
@@ -71,13 +71,13 @@ namespace ImprezGarage.Modules.PetrolExpenditure.ViewModels
 
         #region Methods
         public PetrolExpenditureViewModel(IDataService dataService, IEventAggregator eventAggregator, IVehicleService vehicleService, 
-            IAuthenticationService authenticationService, ICountryManager countryManager)
+            IAuthenticationService authenticationService) //, ICountryManager countryManager)
         {
             _dataService = dataService;
             _eventAggregator = eventAggregator;
             _vehicleService = vehicleService;
             _authenticationService = authenticationService;
-            _countryManager = countryManager;
+            //_countryManager = countryManager;
 
             ResetParameters();
 
@@ -193,17 +193,17 @@ namespace ImprezGarage.Modules.PetrolExpenditure.ViewModels
 
         private void GetCurrentUsersCurrencySymbol(string countryName)
         {
-            var country = _countryManager.GetCountry(countryName);
-            if (country != null)
-            {
-                var currency = country.Currencies.FirstOrDefault();
-                if (currency != null)
-                    CurrencyLabel = currency.Symbol;
-            }
-            else
-            {
+            //var country = _countryManager.GetCountry(countryName);
+            //if (country != null)
+            //{
+            //    var currency = country.Currencies.FirstOrDefault();
+            //    if (currency != null)
+            //        CurrencyLabel = currency.Symbol;
+            //}
+            //else
+            //{
                 CurrencyLabel = string.Empty;
-            }
+            //}
         }
 
         public void Dispose()

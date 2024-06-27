@@ -15,8 +15,8 @@ namespace ImprezGarage.Modules.Firebase
         {
             IFirebaseConfig config = new FirebaseConfig
             {
-                AuthSecret = ConnectionCredentials.AuthSecret,
-                BasePath = ConnectionCredentials.BasePath,
+                //AuthSecret = ConnectionCredentials.AuthSecret,
+                //BasePath = ConnectionCredentials.BasePath,
             };
 
             _client = new FirebaseClient(config);
