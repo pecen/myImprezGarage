@@ -1,19 +1,20 @@
-﻿<UserControl x:Class="ImprezGarage.Modules.MyGarage.Views.MainView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:prism="http://prismlibrary.com/"             
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"   
-             xmlns:vm="clr-namespace:ImprezGarage.Modules.MyGarage.ViewModels"
-             xmlns:views="clr-namespace:ImprezGarage.Modules.MyGarage.Views"
-             prism:ViewModelLocator.AutoWireViewModel="True"
-             mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance Type=vm:MainViewModel}">
+﻿<UserControl
+    x:Class="ImprezGarage.Modules.MyGarage.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:views="clr-namespace:ImprezGarage.Modules.MyGarage.Views"
+    xmlns:vm="clr-namespace:ImprezGarage.Modules.MyGarage.ViewModels"
+    d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/ImprezGarage.Infrastructure;component/Styles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/ImprezGarage.Infrastructure;component/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -21,25 +22,29 @@
     <DockPanel>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="88"/>
-                <RowDefinition/>
+                <RowDefinition Height="88" />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Button Content="Add New Vehicle"
-                            Height="28"
-                            Width="127"
-                            Margin="17, 30, 0, 30" 
-                            Style="{DynamicResource RoundedRectangleButtonStyle}"
-                            Command="{Binding AddNewVehicleCommand}" 
-                            CommandParameter="{x:Type views:ManageVehicle}"/>
+            <Button
+                Width="127"
+                Height="28"
+                Margin="17,30,0,30"
+                Command="{Binding AddNewVehicleCommand}"
+                CommandParameter="{x:Type views:ManageVehicle}"
+                Content="Add New Vehicle"
+                Style="{DynamicResource RoundedRectangleButtonStyle}" />
 
-            <ListBox Grid.Row="1" Margin="0,8,5,0" 
-                     ItemsSource="{Binding Vehicles}" SelectedItem="{Binding SelectedVehicle}"
-                     ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
-                     Background="Transparent"
-                     BorderThickness="0"
-                     BorderBrush="Transparent"
-                     ItemContainerStyle="{DynamicResource VehicleListBoxItemStyle}">
+            <ListBox
+                Grid.Row="1"
+                Margin="0,8,5,0"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                BorderThickness="0"
+                ItemContainerStyle="{DynamicResource VehicleListBoxItemStyle}"
+                ItemsSource="{Binding Vehicles}"
+                ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                SelectedItem="{Binding SelectedVehicle}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <prism:InvokeCommandAction Command="{Binding SelectedVehicleChanged}" />

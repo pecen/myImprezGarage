@@ -15,8 +15,8 @@ namespace ImprezGarage.Modules.Firebase
         {
             IFirebaseConfig config = new FirebaseConfig
             {
-                //AuthSecret = ConnectionCredentials.AuthSecret,
-                //BasePath = ConnectionCredentials.BasePath,
+                AuthSecret = ConnectionCredentials.AuthSecret,
+                BasePath = ConnectionCredentials.BasePath,
             };
 
             _client = new FirebaseClient(config);
@@ -38,8 +38,8 @@ namespace ImprezGarage.Modules.Firebase
         public async Task<List<T>> GetAsync<T>()
         {
             var name = typeof(T).Name;
-            var response = await _client.GetTaskAsync($"{name}s/");
-            return response.Body != null ? response.ResultAs<List<T>>() : new List<T>();
+            var response = await _client.GetTaskAsync($"/{name}s/");
+            return response?.Body != null ? response.ResultAs<List<T>>() : new List<T>();
         }
 
         public async void Submit<T>(T obj, int id)
